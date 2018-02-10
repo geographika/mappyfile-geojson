@@ -1,17 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>863c8145-399f-4736-9b74-f9cb894288b3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tests\test_geojson.py</StartupFile>
+    <StartupFile>example.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
     <OutputPath>.</OutputPath>
     <Name>mappyfile-geojson</Name>
     <RootNamespace>mappyfile-geojson</RootNamespace>
-    <InterpreterId>MSBuild|mappyfile-geojson|$(MSBuildProjectFullPath)</InterpreterId>
+    <InterpreterId>{89e93421-467e-4824-bd7b-9c59167a2953}</InterpreterId>
+    <InterpreterVersion>2.7</InterpreterVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,8 +24,10 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="example.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="mappyfile_geojson.py" />
-    <Compile Include="mappyfile-geojson\mappyfile_geojson.py" />
     <Compile Include="setup.py">
       <SubType>Code</SubType>
     </Compile>
@@ -34,8 +38,12 @@
   <ItemGroup>
     <Content Include=".pypirc" />
     <Content Include=".travis.yml" />
+    <Content Include="example.map">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="LICENSE" />
     <Content Include="notes.private.txt" />
+    <Content Include="polygon.png" />
     <Content Include="README.rst" />
     <Content Include="requirements-dev.txt" />
     <Content Include="requirements.txt" />
@@ -46,10 +54,20 @@
     <Content Include="tox.ini" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="mappyfile-geojson\" />
     <Folder Include="tests\" />
   </ItemGroup>
   <ItemGroup>
+    <Interpreter Include="..\..\VirtualEnvs\mappyfile-geojson\">
+      <Id>{89e93421-467e-4824-bd7b-9c59167a2953}</Id>
+      <BaseInterpreter>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</BaseInterpreter>
+      <Version>2.7</Version>
+      <Description>mappyfile-geojson (Python 64-bit 2.7)</Description>
+      <InterpreterPath>Scripts\python.exe</InterpreterPath>
+      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
+      <LibraryPath>Lib\</LibraryPath>
+      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
+      <Architecture>Amd64</Architecture>
+    </Interpreter>
     <Interpreter Include="C:\VirtualEnvs\mappyfile-geojson\">
       <Id>mappyfile-geojson</Id>
       <Version>2.7</Version>

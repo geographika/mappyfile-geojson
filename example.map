@@ -1,0 +1,65 @@
+MAP
+    SIZE 400 400
+    EXTENT 10 10 40 40
+    SYMBOL
+        NAME "square"
+        TYPE VECTOR
+        POINTS
+            0 0
+            0 1
+            1 1
+            1 0
+            0 0
+        END
+        FILLED TRUE
+        ANCHORPOINT 0.5 0.5
+    END
+    LAYER
+        NAME "Polygon"
+        STATUS ON
+        TYPE POLYGON
+        CLASS
+            STYLE
+                COLOR 204 204 255
+                OUTLINECOLOR 0 0 255
+                WIDTH 3
+                OPACITY 50
+            END
+            STYLE
+                GEOMTRANSFORM VERTICES
+                SYMBOL "square"
+                OUTLINECOLOR 0 0 255
+                WIDTH 2
+                SIZE 20
+            END
+            STYLE
+                GEOMTRANSFORM "END"
+                SYMBOL "square"
+                COLOR 0 0 255
+                SIZE 8
+            END 
+        END
+    END
+    LAYER
+        STATUS ON
+        NAME "grid"
+        TYPE LINE
+        CLASS
+            NAME "Graticule"
+            STYLE
+                COLOR 0 0 0
+                WIDTH 0.1
+            END
+            LABEL
+                COLOR 50 50 50
+                TYPE TRUETYPE
+                SIZE 8
+                POSITION AUTO
+                PARTIALS FALSE
+            END
+        END
+        GRID
+            MININTERVAL 5
+        END
+    END
+END

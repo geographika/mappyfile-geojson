@@ -1,33 +1,101 @@
 mappyfile-geojson
-===================
+=================
 
-A mappyfile plugin to convert GeoJSON to inline Mapfile features
+| |Version| |Build Status|
 
-Convert to:
+A `mappyfile <http://mappyfile.readthedocs.io>`_ plugin to convert GeoJSON to 
+inline `Mapfile features <http://mapserver.org/mapfile/feature.html>`_. Useful for adding 
+dynamically created features (from web services, user created features), to a map. 
 
-LAYER
-    FEATURE
-        WKT "LINESTRING((50 50, 35 50, 35 25, 50 25, 50 50)"
-        ITEMS "809147;0;749.5285764507033"
-        TEXT "Hello"
+.. code-block:: python
+
+    import mappyfile_geojson
+
+    gj = geojson.loads(s)
+    mappyfile_geojson.convert(gj)
+
+Converts:
+
+.. code-block:: json
+
+    {
+      "type": "Feature",
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [ 102.0, 0.0 ],
+          [ 103.0, 1.0 ],
+          [ 104.0, 0.0 ],
+          [ 105.0, 1.0 ]
+        ]
+      },
+      "properties": {
+        "prop0": "value0",
+        "prop1": 0.0
+      }
+    }
+
+to:
+
+.. code-block:: mapfile
+
+    LAYER
+        EXTENT 102.0 0.0 105.0 1.0
+        STATUS ON
+        TYPE LINE
+        PROCESSING "ITEMS=prop0,prop1"
+        FEATURE
+            ITEMS "value0;0.0"
+            POINTS
+                102.0 0.0
+                103.0 1.0
+                104.0 0.0
+                105.0 1.0
+            END
+        END
     END
-    PROCESSING "ITEMS=edgeId,measureFrom,measureTo" 
-END
 
-in JSON:
+Demo
+----
 
-{
-    "__type__": "layer", 
-    "features": [
-        {
-            "__type__": "feature", 
-            "wkt": "LINESTRING((500 500, 3500 500, 3500 2500, 500 2500, 500 500)", 
-            "items": "809147;0;749.5285764507033"
-        }
-    ], 
-    "processing": [
-        "ITEMS=edgeId,measureFrom,measureTo"
-    ]
-}
+See the example of using the plugin with ``mappyfile`` 
+in `example.py <https://github.com/geographika/mappyfile-geojson/example.py>`_. 
 
+.. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/example.png 
 
+Installation
+------------
+
+.. code-block:: console
+
+    pip install mappyfile-geojson
+
+Notes
+-----
+
++ Calculate extent of features, with optional buffer
++ Nested properties are not supported
+
+.. code-block:: json
+
+    "properties": {
+        "prop0": "value0",
+        "prop1": { "this": "that" }
+    }
+
+Will become:
+
+.. code-block:: mapfile
+
+    ITEMS "value0;{u'this': u'that'}"
+
+Author
+------
+
+* Seth Girvin `@geographika <https://github.com/geographika>`_
+
+.. |Version| image:: https://img.shields.io/pypi/v/mappyfile.svg
+   :target: https://pypi.python.org/pypi/mappyfile-geojson
+
+.. |Build Status| image:: https://travis-ci.org/geographika/mappyfile.svg?branch=master
+   :target: https://travis-ci.org/geographika/mappyfile-geojson
