@@ -61,7 +61,7 @@ Demo
 See the example of using the plugin with ``mappyfile`` 
 in `example.py <https://github.com/geographika/mappyfile-geojson/example.py>`_. 
 
-.. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/example.png 
+.. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/polygon.png
 
 Installation
 ------------
@@ -73,29 +73,30 @@ Installation
 Notes
 -----
 
-+ Calculate extent of features, with optional buffer
++ Can calculate extent of input features, with optional buffer
++ Multipart features currently not implemented
 + Nested properties are not supported
 
-.. code-block:: json
-
-    "properties": {
-        "prop0": "value0",
-        "prop1": { "this": "that" }
-    }
-
-Will become:
-
-.. code-block:: mapfile
-
-    ITEMS "value0;{u'this': u'that'}"
+  .. code-block:: json
+  
+      "properties": {
+          "prop0": "value0",
+          "prop1": { "this": "that" }
+      }
+  
+  Will become:
+  
+  .. code-block:: mapfile
+  
+      ITEMS "value0;{u'this': u'that'}"
 
 Author
 ------
 
 * Seth Girvin `@geographika <https://github.com/geographika>`_
 
-.. |Version| image:: https://img.shields.io/pypi/v/mappyfile.svg
+.. |Version| image:: https://img.shields.io/pypi/v/mappyfile-geojson.svg
    :target: https://pypi.python.org/pypi/mappyfile-geojson
 
-.. |Build Status| image:: https://travis-ci.org/geographika/mappyfile.svg?branch=master
+.. |Build Status| image:: https://travis-ci.org/geographika/mappyfile-geojson.svg?branch=master
    :target: https://travis-ci.org/geographika/mappyfile-geojson
