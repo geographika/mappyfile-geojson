@@ -1,5 +1,6 @@
 import os
 import json
+from collections import OrderedDict
 import geojson
 import mappyfile_geojson
 import mappyfile
@@ -11,7 +12,7 @@ def get_geojson(fn):
 
     fn = os.path.join(tests, fn)
     with open(fn) as f:
-        gj = geojson.load(f)
+        gj = geojson.load(f, object_pairs_hook=OrderedDict)
 
     return gj
 
@@ -122,5 +123,5 @@ if __name__ == '__main__':
     test_point()
     test_linestring()
     test_polygon()
-    # run_tests()
+    run_tests()
     print("Done!")

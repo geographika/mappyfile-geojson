@@ -34,10 +34,10 @@ def bbox(f):
 
 def get_extent(features, buffer=0):
     extents = map(bbox, features)
-    full_extent = (min(zip(*extents)[0]) - buffer,
-                   min(zip(*extents)[1]) - buffer,
-                   max(zip(*extents)[2]) + buffer,
-                   max(zip(*extents)[3]) + buffer)
+    full_extent = (min(list(zip(*extents))[0]) - buffer,
+                   min(list(zip(*extents))[1]) - buffer,
+                   max(list(zip(*extents))[2]) + buffer,
+                   max(list(zip(*extents))[3]) + buffer)
 
     return list(full_extent)
 
