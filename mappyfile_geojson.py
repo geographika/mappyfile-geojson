@@ -1,6 +1,5 @@
 import sys
 from collections import OrderedDict
-import geojson
 
 __version__ = "0.1.0"
 
@@ -42,7 +41,7 @@ def get_extent(features, buffer=0):
     return list(full_extent)
 
 
-def create_inline_feature(feat):
+def create_inline_feature(feat, props):
 
     geom = feat.geometry
     f = OrderedDict()
@@ -55,15 +54,12 @@ def create_inline_feature(feat):
 
     f["points"] = coords
     # note items use semicolons and not commas as used elsewhere
-    f["items"] = ";".join(map(str, feat.properties.values()))
+    values = [str(feat.properties[p]) for p in props]
+    f["items"] = ";".join(values)
     return f
 
 
 def get_features(gj):
-
-    # make sure the features are loaded in a fixed order
-    # TODO - check if this is necessary
-    geojson.loads(geojson.dumps(gj), object_pairs_hook=OrderedDict)
 
     if gj.type == "FeatureCollection":
         features = gj.features
@@ -76,9 +72,12 @@ def get_features(gj):
 def create_layer(features, bbox):
 
     first_feature = features[0]
+    # properties will be an unsorted dict, so
+    # sort to ensure consistency
+    props = sorted(first_feature.properties.keys())
     geom_type = first_feature.geometry.type
 
-    mapfile_features = map(create_inline_feature, features)
+    mapfile_features = [create_inline_feature(f, props) for f in features]
 
     layer = OrderedDict()
     layer["__type__"] = "layer"
@@ -98,7 +97,6 @@ def create_layer(features, bbox):
     # layer type must be set before adding inline features!!
 
     layer["type"] = layer_type
-    props = first_feature.properties.keys()
     layer["processing"] = ["ITEMS={}".format(",".join(props))]
     layer["features"] = mapfile_features
     return layer
