@@ -42,6 +42,7 @@
       <SubType>Code</SubType>
     </Content>
     <Content Include="LICENSE" />
+    <Content Include="MANIFEST.in" />
     <Content Include="notes.private.txt" />
     <Content Include="polygon.png" />
     <Content Include="README.rst" />
