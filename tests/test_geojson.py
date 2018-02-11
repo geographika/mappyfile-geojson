@@ -76,7 +76,7 @@ def test_polygon():
             100.0 1.0
             100.0 0.0
         END
-        ITEMS "value0;{u'this': u'that'}"
+        ITEMS "value0;value1"
     END
 END"""
 

@@ -32,7 +32,7 @@ def bbox(f):
 
 
 def get_extent(features, buffer=0):
-    
+
     extents = [bbox(f) for f in features]
     all_extents = list(zip(*extents))
 
