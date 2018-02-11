@@ -41,7 +41,7 @@ Converts:
 
 to:
 
-.. code-block:: mapfile
+.. code-block:: console
 
     LAYER
         EXTENT 102.0 0.0 105.0 1.0
@@ -95,7 +95,7 @@ Notes
   
   Will become:
   
-  .. code-block:: mapfile
+  .. code-block:: console
   
       ITEMS "value0;{u'this': u'that'}"
 
