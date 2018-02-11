@@ -1,6 +1,14 @@
+import sys
 from collections import OrderedDict
+import geojson
 
 __version__ = "0.1.0"
+
+
+# for Python3 long is no longer used
+PY2 = sys.version_info[0] < 3
+if not PY2:
+    long = int # NOQA
 
 
 def explode(coords):
@@ -52,7 +60,10 @@ def create_inline_feature(feat):
 
 
 def get_features(gj):
-    # loop through each feature in a feature collection
+    
+    # make sure the features are loaded in a fixed order
+    # TODO - check if this is necessary
+    geojson.loads(geojson.dumps(gj), object_pairs_hook=OrderedDict)
 
     if gj.type == "FeatureCollection":
         features = gj.features
