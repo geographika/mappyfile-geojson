@@ -27,7 +27,7 @@ def explode(coords):
 
 
 def bbox(f):
-    x, y = zip(*list(explode(f.geometry.coordinates)))
+    x, y = list(zip(*list(explode(f.geometry.coordinates))))
     return min(x), min(y), max(x), max(y)
 
 

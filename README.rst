@@ -67,6 +67,11 @@ can be found in `example.py <https://github.com/geographika/mappyfile-geojson/bl
 
 .. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/polygon.png
 
+Requirements
+------------
+
+* Python 2.7 or Python 3.x
+
 Installation
 ------------
 
