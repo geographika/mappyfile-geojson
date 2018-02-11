@@ -60,7 +60,7 @@ def create_inline_feature(feat):
 
 
 def get_features(gj):
-    
+
     # make sure the features are loaded in a fixed order
     # TODO - check if this is necessary
     geojson.loads(geojson.dumps(gj), object_pairs_hook=OrderedDict)
@@ -92,7 +92,8 @@ def create_layer(features, bbox):
     elif geom_type == "Polygon":
         layer_type = "polygon"
     else:
-        raise NotImplemented("The geometry type {} is not yet implemented".format(geom_type))
+        msg = "The geometry type {} is not yet implemented".format(geom_type)
+        raise NotImplemented(msg)
 
     # layer type must be set before adding inline features!!
 
