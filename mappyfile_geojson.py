@@ -37,7 +37,8 @@ def get_extent(features, buffer=0):
 def create_inline_feature(feat):
 
     geom = feat.geometry
-    f = {"__type__": "feature"}
+    f = OrderedDict()
+    f["__type__"] = "feature"
 
     coords = geom.coordinates
 

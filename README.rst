@@ -9,10 +9,14 @@ dynamically created features (from web services, user created features), to a ma
 
 .. code-block:: python
 
-    import mappyfile_geojson
+    import mappyfile
+    import mappyfile_geojson 
+    # will soon be available to import as
+    # from mappyfile.plugins import geojson as mgeojson
 
-    gj = geojson.loads(s)
-    mappyfile_geojson.convert(gj)
+    gj = geojson.load(fn)
+    l = mappyfile_geojson.convert(gj)
+    print(mappyfile.dumps(l))
 
 Converts:
 
@@ -58,8 +62,8 @@ to:
 Demo
 ----
 
-See the example of using the plugin with ``mappyfile`` 
-in `example.py <https://github.com/geographika/mappyfile-geojson/example.py>`_. 
+An example of using the plugin with ``mappyfile`` 
+can be found in `example.py <https://github.com/geographika/mappyfile-geojson/blob/master/example.py>`_. 
 
 .. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/polygon.png
 
