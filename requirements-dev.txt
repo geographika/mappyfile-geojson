@@ -1,2 +1,8 @@
 geojson
 mappyfile
+flake8
+pytest
+pytest-cov
+tox
+virtualenv
+jsonschema
