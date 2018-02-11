@@ -27,16 +27,19 @@ def explode(coords):
 
 
 def bbox(f):
-    x, y = list(zip(*list(explode(f.geometry.coordinates))))
-    return [min(x), min(y), max(x), max(y)]
+    x, y = zip(*list(explode(f.geometry.coordinates)))
+    return min(x), min(y), max(x), max(y)
 
 
 def get_extent(features, buffer=0):
-    extents = map(bbox, features)
-    full_extent = (min(list(zip(*extents))[0]) - buffer,
-                   min(list(zip(*extents))[1]) - buffer,
-                   max(list(zip(*extents))[2]) + buffer,
-                   max(list(zip(*extents))[3]) + buffer)
+    
+    extents = [bbox(f) for f in features]
+    all_extents = list(zip(*extents))
+
+    full_extent = (min(all_extents[0]) - buffer,
+                   min(all_extents[1]) - buffer,
+                   max(all_extents[2]) + buffer,
+                   max(all_extents[3]) + buffer)
 
     return list(full_extent)
 
