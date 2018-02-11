@@ -5,14 +5,16 @@ mappyfile-geojson
 
 A `mappyfile <http://mappyfile.readthedocs.io>`_ plugin to convert GeoJSON to 
 inline `Mapfile features <http://mapserver.org/mapfile/feature.html>`_. Useful for adding 
-dynamically created features (from web services, user created features), to a map. 
+dynamically created features (from web services, user created features, and other external
+data sources), to a map. 
 
 .. code-block:: python
 
+    import geojson
     import mappyfile
     import mappyfile_geojson 
     # will soon be available to import as
-    # from mappyfile.plugins import geojson as mgeojson
+    # from mappyfile.plugins import mappyfile_geojson
 
     gj = geojson.load(fn)
     l = mappyfile_geojson.convert(gj)
@@ -63,7 +65,8 @@ Demo
 ----
 
 An example of using the plugin with ``mappyfile`` 
-can be found in `example.py <https://github.com/geographika/mappyfile-geojson/blob/master/example.py>`_. 
+can be found in `example.py <https://github.com/geographika/mappyfile-geojson/blob/master/example.py>`_
+along with an `example.map <https://github.com/geographika/mappyfile-geojson/blob/master/example.map>`_. 
 
 .. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/polygon.png
 
@@ -71,12 +74,17 @@ Requirements
 ------------
 
 * Python 2.7 or Python 3.x
+* mappyfile (the plugin can be used on its own but will create a dictionary object
+  structured to use within mappyfile). Installing mapfile should be done seperately. 
 
 Installation
 ------------
 
+Note installing the ``mappyfile-geojson`` plugin will automatically install ``geoson``. 
+
 .. code-block:: console
 
+    pip install mappyfile
     pip install mappyfile-geojson
 
 Notes
