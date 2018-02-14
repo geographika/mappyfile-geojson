@@ -12,8 +12,7 @@
     <OutputPath>.</OutputPath>
     <Name>mappyfile-geojson</Name>
     <RootNamespace>mappyfile-geojson</RootNamespace>
-    <InterpreterId>{89e93421-467e-4824-bd7b-9c59167a2953}</InterpreterId>
-    <InterpreterVersion>2.7</InterpreterVersion>
+    <InterpreterId>MSBuild|mappyfile-geojson|$(MSBuildProjectFullPath)</InterpreterId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DebugSymbols>true</DebugSymbols>
@@ -60,7 +59,6 @@
   <ItemGroup>
     <Interpreter Include="..\..\VirtualEnvs\mappyfile-geojson\">
       <Id>{89e93421-467e-4824-bd7b-9c59167a2953}</Id>
-      <BaseInterpreter>{9a7a9026-48c1-4688-9d5d-e5699d47d074}</BaseInterpreter>
       <Version>2.7</Version>
       <Description>mappyfile-geojson (Python 64-bit 2.7)</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>

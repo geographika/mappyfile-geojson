@@ -1,7 +1,7 @@
 import sys
 from collections import OrderedDict
 
-__version__ = "0.1.4"
+__version__ = "0.2.0"
 
 
 # for Python3 long is no longer used
@@ -57,7 +57,7 @@ def create_inline_feature(feat, props):
 
     f["points"] = coords
     # note items use semicolons and not commas as used elsewhere
-    values = [str(feat.properties[p]) for p in props]
+    values = [unicode(feat.properties[p]) for p in props]
     f["items"] = ";".join(values)
     return f
 

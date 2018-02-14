@@ -19,3 +19,4 @@ cache
 /.coverage
 *.suo
 /mappyfile_geojson.egg-info
+/UpgradeLog.htm
