@@ -8,7 +8,7 @@ __version__ = "0.2.0"
 PY2 = sys.version_info[0] < 3
 if not PY2:
     long = int # NOQA
-    str = unicode # NOQA
+    unicode = str # NOQA
 
 
 def explode(coords):
