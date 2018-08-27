@@ -75,7 +75,7 @@ Requirements
 
 * Python 2.7 or Python 3.x
 * mappyfile (the plugin can be used on its own but will create a dictionary object
-  structured to use within mappyfile). Installing mapfile should be done seperately. 
+  structured to use within mappyfile). Installing mappyfile should be done separately. 
 
 Installation
 ------------
