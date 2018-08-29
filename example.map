@@ -30,10 +30,16 @@ MAP
                 SYMBOL "square"
                 OUTLINECOLOR 0 0 255
                 WIDTH 2
-                SIZE 20
+                SIZE 8
             END
             STYLE
                 GEOMTRANSFORM "END"
+                SYMBOL "square"
+                COLOR 0 0 255
+                SIZE 8
+            END
+            STYLE
+                GEOMTRANSFORM "START"
                 SYMBOL "square"
                 COLOR 0 0 255
                 SIZE 8
