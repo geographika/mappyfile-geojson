@@ -1,7 +1,7 @@
 import sys
 from collections import OrderedDict
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 
 # for Python3 long is no longer used
@@ -18,9 +18,10 @@ def explode(coords):
     coordinate tuples. As long as the input is conforming,
     the type of the geometry doesn't matter.
     """
+
     for e in coords:
         if isinstance(e, (float, int, long)):
-            yield coords
+            yield coords[:2]  # strip out any Z values from the coords
             break
         else:
             for f in explode(e):
@@ -55,6 +56,8 @@ def create_inline_feature(feat, props):
 
     if geom.type == "Point":
         coords = [coords]  # put coords in an outer list
+    elif geom.type == "MultiPolygon":
+        coords = [c[0] for c in coords]  # remove one layer of list nesting
 
     f["points"] = coords
     # note items use semicolons and not commas as used elsewhere
@@ -88,11 +91,11 @@ def create_layer(features, bbox):
     layer["extent"] = bbox
     layer["status"] = "on"
 
-    if geom_type == "LineString":
+    if geom_type in ("LineString", "MultiLineString"):
         layer_type = "line"
-    elif geom_type == "Point":
+    elif geom_type in ("Point", "MultiPoint"):
         layer_type = "point"
-    elif geom_type == "Polygon":
+    elif geom_type in ("Polygon", "MultiPolygon"):
         layer_type = "polygon"
     else:
         msg = "The geometry type {} is not yet implemented".format(geom_type)

@@ -5,7 +5,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>863c8145-399f-4736-9b74-f9cb894288b3</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>tests\test_geojson.py</StartupFile>
+    <StartupFile>create_images.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -30,6 +30,9 @@
     <Compile Include="setup.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="create_images.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="tests\test_geojson.py">
       <SubType>Code</SubType>
     </Compile>
@@ -48,25 +51,28 @@
     <Content Include="requirements-dev.txt" />
     <Content Include="requirements.txt" />
     <Content Include="tests\FeatureCollection.json" />
+    <Content Include="tests\images\FeatureCollection.png" />
+    <Content Include="tests\images\LineString.png" />
+    <Content Include="tests\images\MultiLineString.png" />
+    <Content Include="tests\images\MultiPoint.png" />
+    <Content Include="tests\images\MultiPolygon.png" />
+    <Content Include="tests\images\Point.png" />
+    <Content Include="tests\images\PointZ.png" />
+    <Content Include="tests\images\Polygon.png" />
+    <Content Include="tests\MultiLineString.json" />
+    <Content Include="tests\MultiPoint.json" />
+    <Content Include="tests\PointZ.json" />
     <Content Include="tests\Point.json" />
+    <Content Include="tests\MultiPolygon.json" />
     <Content Include="tests\Polygon.json" />
     <Content Include="tests\LineString.json" />
     <Content Include="tox.ini" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="tests\" />
+    <Folder Include="tests\images\" />
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="..\..\VirtualEnvs\mappyfile-geojson\">
-      <Id>{89e93421-467e-4824-bd7b-9c59167a2953}</Id>
-      <Version>2.7</Version>
-      <Description>mappyfile-geojson (Python 64-bit 2.7)</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <LibraryPath>Lib\</LibraryPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>Amd64</Architecture>
-    </Interpreter>
     <Interpreter Include="C:\VirtualEnvs\mappyfile-geojson\">
       <Id>mappyfile-geojson</Id>
       <Version>2.7</Version>

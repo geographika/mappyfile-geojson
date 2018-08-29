@@ -35,6 +35,29 @@ def test_point():
 END"""
 
 
+def test_pointZ():
+    """
+    Z-values are simply removed as they are not supported by inline
+    MapServer Features
+    """
+    gj = get_geojson("PointZ.json")
+    layer = mappyfile_geojson.convert(gj)
+    s = mappyfile.dumps(layer)
+    print(s)
+    assert s == """LAYER
+    EXTENT 102.0 0.5 102.0 0.5
+    STATUS ON
+    TYPE POINT
+    PROCESSING "ITEMS=prop0"
+    FEATURE
+        POINTS
+            102.0 0.5
+        END
+        ITEMS "value0"
+    END
+END"""
+
+
 def test_linestring():
     gj = get_geojson("LineString.json")
     layer = mappyfile_geojson.convert(gj)
@@ -81,6 +104,84 @@ def test_polygon():
 END"""
 
 
+def test_multipoint():
+    gj = get_geojson("MultiPoint.json")
+    layer = mappyfile_geojson.convert(gj)
+    s = mappyfile.dumps(layer)
+    print(s)
+    assert s == """LAYER
+    EXTENT 10 10 40 40
+    STATUS ON
+    TYPE POINT
+    PROCESSING "ITEMS=prop0"
+    FEATURE
+        POINTS
+            10 40
+            40 30
+            20 20
+            30 10
+        END
+        ITEMS "value0"
+    END
+END"""
+
+
+def test_multilinestring():
+    gj = get_geojson("MultiLineString.json")
+    layer = mappyfile_geojson.convert(gj)
+    s = mappyfile.dumps(layer)
+    print(s)
+    assert s == """LAYER
+    EXTENT 10 10 40 40
+    STATUS ON
+    TYPE LINE
+    PROCESSING "ITEMS=prop0,prop1"
+    FEATURE
+        POINTS
+            10 10
+            20 20
+            10 40
+        END
+        POINTS
+            40 40
+            30 30
+            40 20
+            30 10
+        END
+        ITEMS "value0;0.0"
+    END
+END"""
+
+
+def test_multipolygon():
+    gj = get_geojson("MultiPolygon.json")
+    layer = mappyfile_geojson.convert(gj)
+    s = mappyfile.dumps(layer)
+    print(s)
+    assert s == """LAYER
+    EXTENT 5 5 45 40
+    STATUS ON
+    TYPE POLYGON
+    PROCESSING "ITEMS=prop0,prop1"
+    FEATURE
+        POINTS
+            30 20
+            45 40
+            10 40
+            30 20
+        END
+        POINTS
+            15 5
+            40 10
+            10 20
+            5 10
+            15 5
+        END
+        ITEMS "value0;value1"
+    END
+END"""
+
+
 def test_featurecollection():
     gj = get_geojson("FeatureCollection.json")
     layer = mappyfile_geojson.convert(gj)
@@ -118,9 +219,6 @@ def run_tests():
 
 
 if __name__ == '__main__':
-    test_featurecollection()
-    test_point()
-    test_linestring()
-    test_polygon()
-    run_tests()
+    test_multipolygon()
+    # run_tests()
     print("Done!")
