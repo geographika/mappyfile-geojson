@@ -20,3 +20,4 @@ cache
 *.suo
 /mappyfile_geojson.egg-info
 /UpgradeLog.htm
+/.pytest_cache/README.md
