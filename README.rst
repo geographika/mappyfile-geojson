@@ -6,15 +6,20 @@ mappyfile-geojson
 A `mappyfile <http://mappyfile.readthedocs.io>`_ plugin to convert GeoJSON to 
 inline `Mapfile features <http://mapserver.org/mapfile/feature.html>`_. Useful for adding 
 dynamically created features (from web services, user created features, and other external
-data sources), to a map. 
+data sources) to a map, or to quickly visualise a geometry. 
+
+Note - to display entire GeoJSON files MapServer
+can be configured to read GeoJSON as an input `OGR source <https://mapserver.org/input/vector/ogr.html>`_
+using the `GeoJSON driver <https://www.gdal.org/drv_geojson.html>`_. 
 
 .. code-block:: python
 
     import geojson
     import mappyfile
+    # import directly
     import mappyfile_geojson 
-    # will soon be available to import as
-    # from mappyfile.plugins import mappyfile_geojson
+    # can also be imported as plugin using
+    from mappyfile.plugins import mappyfile_geojson
 
     gj = geojson.load(fn)
     l = mappyfile_geojson.convert(gj)
@@ -70,6 +75,12 @@ along with an `example.map <https://github.com/geographika/mappyfile-geojson/blo
 
 .. image:: https://raw.githubusercontent.com/geographika/mappyfile-geojson/master/polygon.png
 
+A further example, creating images for each of the test cases using  `mapscript <https://pypi.org/project/mapscript/>`_ 
+is available at `create_images.py <https://github.com/geographika/mappyfile-geojson/blob/master/create_images.py>`_. 
+
+The sample output images are in the `images <https://github.com/geographika/mappyfile-geojson/blob/master/tests/images/>`_
+folder. 
+
 Requirements
 ------------
 
@@ -80,7 +91,7 @@ Requirements
 Installation
 ------------
 
-Note installing the ``mappyfile-geojson`` plugin will automatically install ``geoson``. 
+Note installing the ``mappyfile-geojson`` plugin will automatically install the required dependency ``geoson``. 
 
 .. code-block:: console
 
@@ -90,9 +101,14 @@ Note installing the ``mappyfile-geojson`` plugin will automatically install ``ge
 Notes
 -----
 
-+ Can calculate extent of input features, with optional buffer
-+ Multipart features currently not implemented
-+ Nested properties are not supported
++ Can calculate extent of input features, with an optional buffer (by passing an ``extent_buffer`` to the ``convert``
+  function)
++ Multipart features are supported
++ Coordinate sequences with Z values are supported, but Z values are ignored as they are not supported in
+  Mapserver inline features. 
++ As a MapServer ``LAYER`` only supports a single geometry type, all features in the GeoJSON file should also
+  be of the same type (however a mix of multipart and non-multipart features is supported e.g. LineString and MultiLineString)
++ Nested JSON properties are not supported: 
 
   .. code-block:: json
   
@@ -106,6 +122,26 @@ Notes
   .. code-block:: console
   
       ITEMS "value0;{u'this': u'that'}"
+
+Releases
+--------
+
+0.3 (29/08/2018)
+++++++++++++++++
+
++ Add support for MultiPoint, MultiLineString, and MultiPolygon
++ Allow coordinates with Z values (previously these would crash the script)
++ Updated README
+
+0.2 (15/02/2018)
+++++++++++++++++
+
++ Unicode support
+
+0.1 (06/02/2018)
+++++++++++++++++
+
++ Initial release
 
 Author
 ------
