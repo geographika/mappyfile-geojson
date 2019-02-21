@@ -91,7 +91,7 @@ Requirements
 Installation
 ------------
 
-Note installing the ``mappyfile-geojson`` plugin will automatically install the required dependency ``geoson``. 
+Note installing the ``mappyfile-geojson`` plugin will automatically install the required dependency ``geojson``. 
 
 .. code-block:: console
 
