@@ -1,7 +1,7 @@
 import sys
 from collections import OrderedDict
 
-__version__ = "0.3.0"
+__version__ = "0.3.1"
 
 
 # for Python3 long is no longer used
@@ -99,7 +99,7 @@ def create_layer(features, bbox):
         layer_type = "polygon"
     else:
         msg = "The geometry type {} is not yet implemented".format(geom_type)
-        raise NotImplemented(msg)
+        raise NotImplementedError(msg)
 
     # layer type must be set before adding inline features!!
 

@@ -6,7 +6,7 @@ pip install mapscript
 
 Make sure that MapServer is also on the system path before running the script e.g. (on Windows):
 
-SET PATH=C:\MapServer\bin;%PATH%
+SET PATH=C:/MapServer/bin;%PATH%
 cd /D /mappyfile-geojson
 python create_images.py
 
