@@ -1,7 +1,7 @@
 import sys
 from collections import OrderedDict
 
-__version__ = "0.3.1"
+__version__ = "0.4.0"
 
 
 # for Python3 long is no longer used

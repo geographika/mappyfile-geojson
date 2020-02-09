@@ -1,2 +1,2 @@
-geojson
-mappyfile
+geojson==2.5.0
+mappyfile==0.8.4
