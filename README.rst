@@ -126,6 +126,15 @@ Notes
 Releases
 --------
 
+0.4 (09/02/2020)
+++++++++++++++++
+
++ Automated Windows testing
++ Automated release process
++ Set ``geojson`` dependency version
++ Fix failing tests due to precision issuee differences between py2 and py3
++ Use integers for layer ``EXTENT`` where possible e.g. 5 instead of 5.0
+
 0.3 (29/08/2018)
 ++++++++++++++++
 
