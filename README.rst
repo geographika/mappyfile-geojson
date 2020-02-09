@@ -51,7 +51,7 @@ to:
 .. code-block:: console
 
     LAYER
-        EXTENT 102.0 0.0 105.0 1.0
+        EXTENT 102 0 105 1
         STATUS ON
         TYPE LINE
         PROCESSING "ITEMS=prop0,prop1"
