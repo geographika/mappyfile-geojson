@@ -32,6 +32,6 @@ setup(name='mappyfile-geojson',
       author_email='sethg@geographika.co.uk',
       license='MIT',
       py_modules=['mappyfile_geojson'],
-      install_requires=['geojson'],
+      install_requires=['geojson==2.5.0'],
       entry_points={'mappyfile.plugins': 'mappyfile_geojson = mappyfile_geojson'},
       zip_safe=False)

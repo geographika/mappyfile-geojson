@@ -1,4 +1,4 @@
-geojson
+geojson==2.5.0
 mappyfile
 flake8
 pytest
