@@ -110,16 +110,16 @@ def test_multipoint():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 10 10 40 40
+    EXTENT 10.0 10.0 40.0 40.0
     STATUS ON
     TYPE POINT
     PROCESSING "ITEMS=prop0"
     FEATURE
         POINTS
-            10 40
-            40 30
-            20 20
-            30 10
+            10.0 40.0
+            40.0 30.0
+            20.0 20.0
+            30.0 10.0
         END
         ITEMS "value0"
     END
@@ -132,21 +132,21 @@ def test_multilinestring():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 10 10 40 40
+    EXTENT 10.0 10.0 40.0 40.0
     STATUS ON
     TYPE LINE
     PROCESSING "ITEMS=prop0,prop1"
     FEATURE
         POINTS
-            10 10
-            20 20
-            10 40
+            10.0 10.0
+            20.0 20.0
+            10.0 40.0
         END
         POINTS
-            40 40
-            30 30
-            40 20
-            30 10
+            40.0 40.0
+            30.0 30.0
+            40.0 20.0
+            30.0 10.0
         END
         ITEMS "value0;0.0"
     END
@@ -159,23 +159,23 @@ def test_multipolygon():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 5 5 45 40
+    EXTENT 5.0 5.0 45.0 40.0
     STATUS ON
     TYPE POLYGON
     PROCESSING "ITEMS=prop0,prop1"
     FEATURE
         POINTS
-            30 20
-            45 40
-            10 40
-            30 20
+            30.0 20.0
+            45.0 40.0
+            10.0 40.0
+            30.0 20.0
         END
         POINTS
-            15 5
-            40 10
-            10 20
-            5 10
-            15 5
+            15.0 5.0
+            40.0 10.0
+            10.0 20.0
+            5.0 10.0
+            15.0 5.0
         END
         ITEMS "value0;value1"
     END
