@@ -22,7 +22,7 @@ def test_point():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 102.0 0.5 102.0 0.5
+    EXTENT 102 0.5 102 0.5
     STATUS ON
     TYPE POINT
     PROCESSING "ITEMS=prop0"
@@ -45,7 +45,7 @@ def test_pointZ():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 102.0 0.5 102.0 0.5
+    EXTENT 102 0.5 102 0.5
     STATUS ON
     TYPE POINT
     PROCESSING "ITEMS=prop0"
@@ -64,7 +64,7 @@ def test_linestring():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 102.0 0.0 105.0 1.0
+    EXTENT 102 0 105 1
     STATUS ON
     TYPE LINE
     PROCESSING "ITEMS=prop0,prop1"
@@ -87,7 +87,7 @@ def test_polygon():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 100.0 0.0 101.0 1.0
+    EXTENT 100 0 101 1
     STATUS ON
     TYPE POLYGON
     PROCESSING "ITEMS=prop0,prop1"
@@ -110,7 +110,7 @@ def test_multipoint():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 10.0 10.0 40.0 40.0
+    EXTENT 10 10 40 40
     STATUS ON
     TYPE POINT
     PROCESSING "ITEMS=prop0"
@@ -132,7 +132,7 @@ def test_multilinestring():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 10.0 10.0 40.0 40.0
+    EXTENT 10 10 40 40
     STATUS ON
     TYPE LINE
     PROCESSING "ITEMS=prop0,prop1"
@@ -159,7 +159,7 @@ def test_multipolygon():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 5.0 5.0 45.0 40.0
+    EXTENT 5 5 45 40
     STATUS ON
     TYPE POLYGON
     PROCESSING "ITEMS=prop0,prop1"
@@ -189,7 +189,7 @@ def test_featurecollection():
     s = mappyfile.dumps(layer)
     print(s)
     assert s == """LAYER
-    EXTENT 102.0 0.0 105.0 1.0
+    EXTENT 102 0 105 1
     STATUS ON
     TYPE LINE
     PROCESSING "ITEMS=prop0"
@@ -219,6 +219,6 @@ def run_tests():
 
 
 if __name__ == '__main__':
-    test_multipolygon()
-    # run_tests()
+    # test_multipolygon()
+    run_tests()
     print("Done!")

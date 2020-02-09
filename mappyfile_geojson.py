@@ -43,6 +43,9 @@ def get_extent(features, buffer=0):
                    max(all_extents[2]) + buffer,
                    max(all_extents[3]) + buffer)
 
+    # use integers if floats have no precision e.g. use 5 for 5.0
+    full_extent = (int(c) if isinstance(c, float) and c.is_integer() else c for c in full_extent)
+
     return list(full_extent)
 
 
