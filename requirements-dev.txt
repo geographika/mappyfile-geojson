@@ -1,5 +1,5 @@
 geojson==2.5.0
-mappyfile==0.8.4
+mappyfile==0.9.0
 flake8
 pytest
 pytest-cov
