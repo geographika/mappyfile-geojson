@@ -25,7 +25,7 @@ using the `GeoJSON driver <https://www.gdal.org/drv_geojson.html>`_.
     l = mappyfile_geojson.convert(gj)
     print(mappyfile.dumps(l))
 
-Converts:
+Converts the following JSON:
 
 .. code-block:: json
 
@@ -46,7 +46,7 @@ Converts:
       }
     }
 
-to:
+to the following Mapfile ``LAYER``:
 
 .. code-block:: console
 
@@ -84,7 +84,7 @@ folder.
 Requirements
 ------------
 
-* Python 2.7 or Python 3.x
+* Python 3.8+
 * mappyfile (the plugin can be used on its own but will create a dictionary object
   structured to use within mappyfile). Installing mappyfile should be done separately. 
 
@@ -105,7 +105,7 @@ Notes
   function)
 + Multipart features are supported
 + Coordinate sequences with Z values are supported, but Z values are ignored as they are not supported in
-  Mapserver inline features. 
+  Mapserver inline features.
 + As a MapServer ``LAYER`` only supports a single geometry type, all features in the GeoJSON file should also
   be of the same type (however a mix of multipart and non-multipart features is supported e.g. LineString and MultiLineString)
 + Nested JSON properties are not supported: 
@@ -126,13 +126,20 @@ Notes
 Releases
 --------
 
+1.0 (02/10/2023)
+++++++++++++++++
+
++ Drop support for Python 2.7
++ Update of GeoJSON and mappyfile dependencies
++ Code reformatted using ``black``
+
 0.4 (09/02/2020)
 ++++++++++++++++
 
 + Automated Windows testing
 + Automated release process
 + Set ``geojson`` dependency version
-+ Fix failing tests due to precision issuee differences between py2 and py3
++ Fix failing tests due to precision issue differences between py2 and py3
 + Use integers for layer ``EXTENT`` where possible e.g. 5 instead of 5.0
 
 0.3 (29/08/2018)
