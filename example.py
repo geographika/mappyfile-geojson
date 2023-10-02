@@ -2,7 +2,7 @@ import mappyfile
 import mappyfile_geojson
 import geojson
 
-gj = '''{
+gj = """{
   "type": "Feature",
   "geometry": {
     "type": "Polygon",
@@ -10,7 +10,7 @@ gj = '''{
       [30, 10], [40, 40], [20, 40], [10, 20], [30, 10]
     ]
   }
-}'''
+}"""
 
 # load a string into a GeoJSON object
 gj = geojson.loads(gj)

@@ -31,7 +31,6 @@ def get_geojson(fn):
 
 
 def create_image(f):
-
     basename = os.path.splitext(os.path.basename(f))[0] + ".png"
     fn = os.path.join("tests", "images", basename)
     print("Creating {}".format(fn))
@@ -46,7 +45,9 @@ def create_image(f):
     poly_layer = m["layers"][0]  # turn of the sample layer
     poly_layer["status"] = "off"
 
-    layer["classes"] = poly_layer["classes"]  # take the existing symbology from the sample layer
+    layer["classes"] = poly_layer[
+        "classes"
+    ]  # take the existing symbology from the sample layer
     m["layers"].insert(0, layer)  # add the GeoJSON layer to the map
 
     # print(mappyfile.dumps(m))
@@ -58,7 +59,6 @@ def create_image(f):
 
 
 def main():
-
     jsn_files = glob.glob("tests/*.json")
     for f in jsn_files:
         create_image(f)

@@ -1,0 +1,20 @@
+# Flake8 does not currently support pyproject.toml
+# without an additional dependency
+# see https://pypi.org/project/Flake8-pyproject/
+
+# [tool.flake8]
+# max-line-length = 160
+# extend-ignore = ['E203','W503']
+# exclude = [
+#     'build',
+#     'dist',
+#     'misc',
+#     'tests/mapfiles',
+#     'docs/_build']
+
+[tool.pytest.ini_options]
+testpaths = [
+    'tests',
+]
+# there is no ignore ini setting in pytest, but we can add command line options with addopts
+addopts  = ['--ignore=tests/mapfiles']

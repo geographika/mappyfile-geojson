@@ -1,8 +1,8 @@
-geojson==2.5.0
-mappyfile==0.8.4
+mappyfile
 flake8
 pytest
 pytest-cov
-tox
 virtualenv
 pygments
+flake8
+black

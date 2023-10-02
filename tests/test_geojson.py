@@ -21,7 +21,9 @@ def test_point():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 102 0.5 102 0.5
     STATUS ON
     TYPE POINT
@@ -33,6 +35,7 @@ def test_point():
         ITEMS "value0"
     END
 END"""
+    )
 
 
 def test_pointZ():
@@ -44,7 +47,9 @@ def test_pointZ():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 102 0.5 102 0.5
     STATUS ON
     TYPE POINT
@@ -56,6 +61,7 @@ def test_pointZ():
         ITEMS "value0"
     END
 END"""
+    )
 
 
 def test_linestring():
@@ -63,7 +69,9 @@ def test_linestring():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 102 0 105 1
     STATUS ON
     TYPE LINE
@@ -78,6 +86,7 @@ def test_linestring():
         ITEMS "value0;0.0"
     END
 END"""
+    )
 
 
 def test_polygon():
@@ -86,7 +95,9 @@ def test_polygon():
     print(json.dumps(layer, indent=4))
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 100 0 101 1
     STATUS ON
     TYPE POLYGON
@@ -102,6 +113,7 @@ def test_polygon():
         ITEMS "value0;value1"
     END
 END"""
+    )
 
 
 def test_multipoint():
@@ -109,7 +121,9 @@ def test_multipoint():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 10 10 40 40
     STATUS ON
     TYPE POINT
@@ -124,6 +138,7 @@ def test_multipoint():
         ITEMS "value0"
     END
 END"""
+    )
 
 
 def test_multilinestring():
@@ -131,7 +146,9 @@ def test_multilinestring():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 10 10 40 40
     STATUS ON
     TYPE LINE
@@ -151,6 +168,7 @@ def test_multilinestring():
         ITEMS "value0;0.0"
     END
 END"""
+    )
 
 
 def test_multipolygon():
@@ -158,7 +176,9 @@ def test_multipolygon():
     layer = mappyfile_geojson.convert(gj)
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 5 5 45 40
     STATUS ON
     TYPE POLYGON
@@ -180,6 +200,7 @@ def test_multipolygon():
         ITEMS "value0;value1"
     END
 END"""
+    )
 
 
 def test_featurecollection():
@@ -188,7 +209,9 @@ def test_featurecollection():
     print(json.dumps(layer, indent=4))
     s = mappyfile.dumps(layer)
     print(s)
-    assert s == """LAYER
+    assert (
+        s
+        == """LAYER
     EXTENT 102 0 105 1
     STATUS ON
     TYPE LINE
@@ -212,13 +235,14 @@ def test_featurecollection():
         ITEMS "value1"
     END
 END"""
+    )
 
 
 def run_tests():
     pytest.main(["tests/test_geojson.py", "-vv"])
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # test_multipolygon()
     run_tests()
     print("Done!")

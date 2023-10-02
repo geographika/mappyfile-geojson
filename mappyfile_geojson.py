@@ -1,14 +1,6 @@
-import sys
 from collections import OrderedDict
 
-__version__ = "0.4.0"
-
-
-# for Python3 long is no longer used
-PY2 = sys.version_info[0] < 3
-if not PY2:
-    long = int # NOQA
-    unicode = str # NOQA
+__version__ = "1.0.0"
 
 
 def explode(coords):
@@ -20,7 +12,7 @@ def explode(coords):
     """
 
     for e in coords:
-        if isinstance(e, (float, int, long)):
+        if isinstance(e, (float, int)):
             yield coords[:2]  # strip out any Z values from the coords
             break
         else:
@@ -34,23 +26,25 @@ def bbox(f):
 
 
 def get_extent(features, buffer=0):
-
     extents = [bbox(f) for f in features]
     all_extents = list(zip(*extents))
 
-    full_extent = (min(all_extents[0]) - buffer,
-                   min(all_extents[1]) - buffer,
-                   max(all_extents[2]) + buffer,
-                   max(all_extents[3]) + buffer)
+    full_extent = (
+        min(all_extents[0]) - buffer,
+        min(all_extents[1]) - buffer,
+        max(all_extents[2]) + buffer,
+        max(all_extents[3]) + buffer,
+    )
 
     # use integers if floats have no precision e.g. use 5 for 5.0
-    full_extent = (int(c) if isinstance(c, float) and c.is_integer() else c for c in full_extent)
+    full_extent = (
+        int(c) if isinstance(c, float) and c.is_integer() else c for c in full_extent
+    )
 
     return list(full_extent)
 
 
 def create_inline_feature(feat, props):
-
     geom = feat.geometry
     f = OrderedDict()
     f["__type__"] = "feature"
@@ -64,13 +58,12 @@ def create_inline_feature(feat, props):
 
     f["points"] = coords
     # note items use semicolons and not commas as used elsewhere
-    values = [unicode(feat.properties[p]) for p in props]
+    values = [str(feat.properties[p]) for p in props]
     f["items"] = ";".join(values)
     return f
 
 
 def get_features(gj):
-
     if gj.type == "FeatureCollection":
         features = gj.features
     elif gj.type == "Feature":
@@ -80,7 +73,6 @@ def get_features(gj):
 
 
 def create_layer(features, bbox):
-
     first_feature = features[0]
     # properties will be an unsorted dict, so
     # sort to ensure consistency
