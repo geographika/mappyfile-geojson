@@ -38,11 +38,11 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".flake8" />
+    <Content Include=".github\dependabot.yml" />
+    <Content Include=".github\workflows\main.yml" />
+    <Content Include=".gitignore" />
     <Content Include=".pypirc" />
-    <Content Include=".travis.yml" />
-    <Content Include="appveyor.yml">
-      <SubType>Code</SubType>
-    </Content>
     <Content Include="example.map">
       <SubType>Code</SubType>
     </Content>
@@ -50,9 +50,11 @@
     <Content Include="MANIFEST.in" />
     <Content Include="notes.private.txt" />
     <Content Include="polygon.png" />
+    <Content Include="pyproject.toml" />
     <Content Include="README.rst" />
     <Content Include="requirements-dev.txt" />
     <Content Include="requirements.txt" />
+    <Content Include="setup.cfg" />
     <Content Include="tests\FeatureCollection.json" />
     <Content Include="tests\images\FeatureCollection.png" />
     <Content Include="tests\images\LineString.png" />
@@ -69,26 +71,18 @@
     <Content Include="tests\MultiPolygon.json" />
     <Content Include="tests\Polygon.json" />
     <Content Include="tests\LineString.json" />
-    <Content Include="tox.ini" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".github\" />
+    <Folder Include=".github\workflows\" />
     <Folder Include="tests\" />
     <Folder Include="tests\images\" />
   </ItemGroup>
   <ItemGroup>
-    <Interpreter Include="C:\VirtualEnvs\mappyfile-geojson3\">
-      <Id>mappyfile-geojson3</Id>
-      <Version>3.7</Version>
-      <Description>mappyfile-geojson3 (Python 3.7 (64-bit))</Description>
-      <InterpreterPath>Scripts\python.exe</InterpreterPath>
-      <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
-      <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
-      <Architecture>X64</Architecture>
-    </Interpreter>
     <Interpreter Include="C:\VirtualEnvs\mappyfile-geojson\">
       <Id>mappyfile-geojson</Id>
-      <Version>2.7</Version>
-      <Description>mappyfile-geojson (Python 2.7 (64-bit))</Description>
+      <Version>3.10</Version>
+      <Description>mappyfile-geojson (Python 3.10 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
